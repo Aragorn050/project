@@ -14,7 +14,7 @@ export const globalStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
-        paddingTop: 40,
+        paddingTop: 30,
         paddingHorizontal: 20,
     },
     title: {
@@ -23,11 +23,11 @@ export const globalStyles = StyleSheet.create({
         color: colors.text,
     },
     sectionTitle: {
-        fontSize: 18,
+        fontSize: 26,
         fontWeight: '600',
         color: colors.textSecondary,
-        marginTop: 30,
-        marginBottom: 16,
+        marginTop: 20,
+        marginBottom: 0,
     },
     empty: {
         color: colors.textSecondary,
