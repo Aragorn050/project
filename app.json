@@ -39,6 +39,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d3f0756b-5ab3-48f2-be02-2d8e56d3f319"
+      }
+    },
+    "owner": "sudentsk"
   }
 }
