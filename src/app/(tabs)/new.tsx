@@ -1,6 +1,6 @@
 import { globalStyles } from '@/styles/global';
 import { Text, ScrollView } from 'react-native';
-import SongsList from '@/components/SongsList';
+import SongsList from '../../components/SongsCarousel';
 import HorizontalCarousel from "@/components/HorizontalCarousel";
 
 export default function NewScreen() {

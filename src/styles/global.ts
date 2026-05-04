@@ -26,7 +26,7 @@ export const globalStyles = StyleSheet.create({
         fontSize: 26,
         fontWeight: '600',
         color: colors.textSecondary,
-        marginTop: 20,
+        marginTop: 10,
         marginBottom: 0,
     },
     empty: {

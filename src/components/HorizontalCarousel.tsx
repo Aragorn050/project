@@ -35,7 +35,7 @@ const HorizontalCarousel = ({
     const renderItem = () => (
         <TouchableOpacity
             style={[styles.card, {width: cardSize}]}
-            activeOpacity={0.7}
+            activeOpacity={0.9}
         >
             <View style={[styles.square, {width: cardSize, height: cardSize}]}/>
             <View style={styles.textContainer}>
@@ -57,7 +57,6 @@ const HorizontalCarousel = ({
                 keyExtractor={(item) => item.id}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                // Snap interval must update based on the dynamic size
                 snapToInterval={cardSize + spacing}
                 decelerationRate="fast"
                 snapToAlignment="start"

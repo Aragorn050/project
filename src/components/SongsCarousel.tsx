@@ -44,7 +44,7 @@ const HorizontalCarousel = ({
                 <TouchableOpacity
                     key={song.id}
                     style={styles.card}
-                    activeOpacity={0.7}
+                    activeOpacity={0.9}
                 >
                     <View style={[styles.square, { width: squareSize, height: squareSize }]} />
                     <View style={styles.textContainer}>
@@ -63,7 +63,7 @@ const HorizontalCarousel = ({
     return (
         <View style={styles.container}>
             <FlatList
-                data={chunkedData} // Use the chunked groups
+                data={chunkedData}
                 renderItem={renderColumn}
                 keyExtractor={(_, index) => `col-${index}`}
                 horizontal

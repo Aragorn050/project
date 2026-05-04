@@ -10,7 +10,11 @@ export default function HomeScreen() {
 
             <Text style={globalStyles.sectionTitle}>Recently Played</Text>
             <HorizontalCarousel albumName={"Album Name"} bandName={"Band Name"} amount={5}/>
+
+            <Text style={globalStyles.sectionTitle}>Stations for You</Text>
             <HorizontalCarousel albumName={"Album Name"} bandName={"Band Name"} amount={5}/>
+
+            <Text style={globalStyles.sectionTitle}>New Releases for You</Text>
             <HorizontalCarousel albumName={"Album Name"} bandName={"Band Name"} amount={5}/>
 
 
