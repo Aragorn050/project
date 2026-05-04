@@ -1,4 +1,5 @@
-import { colors, globalStyles } from '@/styles/global';
+import {colors} from '@/styles/global';
+import React from 'react';
 import {
     FlatList,
     View,
@@ -8,43 +9,58 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-const { width } = Dimensions.get('window');
+const {width: screenWidth} = Dimensions.get('window');
 
-// size of the squares
-const cardSize = width * 0.4;
-const spacing = 12;
+interface HorizontalCarouselProps {
+    albumName: string;
+    bandName: string;
+    amount: number;
+    sizeMultiplier?: number;
+}
 
-const defaultList = [
-    { id: '1', name: 'Album One',artist: 'Artist' },
-    { id: '2', name: 'Album Two',artist: 'Artist' },
-    { id: '3', name: 'Album Three',artist: 'Artist' },
-    { id: '4', name: 'Album Four',artist: 'Artist' },
-    { id: '5', name: 'Album Five',artist: 'Artist' },
-];
+const HorizontalCarousel = ({
+                                albumName,
+                                bandName,
+                                amount,
+                                sizeMultiplier = 0.4
+                            }: HorizontalCarouselProps) => {
 
-const HorizontalCarousel = () => {
-    const renderItem = ({ item }: { item: typeof defaultList[0] }) => (
-        <TouchableOpacity style={styles.card}>
-            <Text style={styles.label} numberOfLines={2}>
+    const cardSize = screenWidth * sizeMultiplier;
+    const spacing = 12;
 
-            </Text>
-            <View style={styles.square} />
-            <Text style={styles.label} numberOfLines={2}>
-                {item.name}{'\n'}
-                {item.artist}
-            </Text>
+    const data = Array.from({length: amount}, (_, index) => ({
+        id: index.toString(),
+    }));
+
+    const renderItem = () => (
+        <TouchableOpacity
+            style={[styles.card, {width: cardSize}]}
+            activeOpacity={0.7}
+        >
+            <View style={[styles.square, {width: cardSize, height: cardSize}]}/>
+            <View style={styles.textContainer}>
+                <Text style={styles.bandLabel}>
+                    {albumName}
+                </Text>
+                <Text style={styles.artistLabel}>
+                    {bandName}
+                </Text>
+            </View>
         </TouchableOpacity>
     );
 
     return (
         <View style={styles.container}>
             <FlatList
-                data={defaultList}
+                data={data}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 horizontal
                 showsHorizontalScrollIndicator={false}
+                // Snap interval must update based on the dynamic size
+                snapToInterval={cardSize + spacing}
                 decelerationRate="fast"
+                snapToAlignment="start"
                 contentContainerStyle={styles.listPadding}
             />
         </View>
@@ -53,32 +69,32 @@ const HorizontalCarousel = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 0,
+        marginVertical: 10,
     },
     listPadding: {
-        paddingHorizontal: 5,
+        paddingHorizontal: 1,
     },
     card: {
-        width: cardSize,
-        marginRight: spacing,
+        marginRight: 12,
     },
     square: {
-        width: cardSize,
-        height: cardSize,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#E0E0E0',
         borderRadius: 10,
+        marginBottom: 8,
     },
-    label: {
+    textContainer: {
+        paddingLeft: 2,
+    },
+    bandLabel: {
         fontSize: 14,
+        fontWeight: 'bold',
+        color: colors.text,
+    },
+    artistLabel: {
+        fontSize: 12,
         fontWeight: '500',
         color: colors.textSecondary,
-        textAlign: 'left',
-    },
-    band: {
-        fontSize: 14,
-        fontWeight: '500',
-        color: colors.textSecondary,
-        textAlign: 'left',
+        marginTop: 2,
     }
 });
 
